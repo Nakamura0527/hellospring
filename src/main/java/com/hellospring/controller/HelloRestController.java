@@ -11,10 +11,6 @@ public class HelloRestController {
     @RequestMapping("/hellorest/{name}")
     @Transactional
     public String hellorest(@PathVariable String name) {
-//        Todo loadedTodo = todoMapper.select(100); // インサートしたTodoを取得して標準出力する
-//        System.out.println("ID       : " + loadedTodo.getId());
-//        System.out.println("TITLE    : " + loadedTodo.getTitle());
-//        System.out.println("CONTENT  : " + loadedTodo.getContent());
         return String.format("Hello %s!", name);
     }
 
