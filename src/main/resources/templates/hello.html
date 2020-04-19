@@ -25,20 +25,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr th:each="todo : ${todoList}">
                 <th th:text="${todo.id}" scope="row"></th>
                 <td th:text="${todo.title}">Mark</td>
                 <td th:text="${todo.content}">Otto</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
               </tr>
             </tbody>
           </table>
