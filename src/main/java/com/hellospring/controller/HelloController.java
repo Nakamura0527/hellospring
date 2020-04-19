@@ -19,7 +19,8 @@ public class HelloController {
 
 	@RequestMapping("/list/")
 	public String list(Model model) {
-		List<Todo> todoList = service.findTodoList();
+//		List<Todo> todoList = service.findTodoList();
+		List<Todo> todoList = service.findTodoList2();
 		model.addAttribute("todoList", todoList);
 		return "hello";
 	}

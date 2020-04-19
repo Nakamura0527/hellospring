@@ -32,11 +32,6 @@ public class HellospringApplication implements CommandLineRunner{
 
         todoMapper.insert(newTodo); // 新しいTodoをインサートする
 
-        Todo loadedTodo = todoMapper.select(100); // インサートしたTodoを取得して標準出力する
-        System.out.println("ID       : " + loadedTodo.getId());
-        System.out.println("TITLE    : " + loadedTodo.getTitle());
-        System.out.println("CONTENT  : " + loadedTodo.getContent());
-
         for (Todo todo : todoMapper.selectAll()) {
             System.out.println("ID       : " + todo.getId());
             System.out.println("TITLE    : " + todo.getTitle());
