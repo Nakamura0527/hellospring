@@ -8,11 +8,8 @@
       *
     FROM
       todo
-    <where>
-      <if test="title != null">
-        title LIKE CONCAT(#{title}, '%')
-      </if>
-    </where>
+    WHERE
+        title = #{title}
     ORDER BY
       title
   </select>
