@@ -10,5 +10,10 @@ import com.hellospring.domain.Todo;
 @Mapper
 public interface TodoListMapper {
 
+	/**
+	 * リストを検索する。
+	 * @param title タイトル
+	 * @return TODOリスト
+	 */
 	List<Todo> selectList(@Param("title") String title);
 }

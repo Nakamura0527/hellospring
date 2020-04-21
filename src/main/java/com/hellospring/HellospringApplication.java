@@ -20,22 +20,31 @@ public class HellospringApplication implements CommandLineRunner{
     	this.todoMapper = todoMapper;
     }
 
-    @Transactional
-    @Override
-    public void run(String... args) throws Exception {
-        Todo newTodo = new Todo();
-        newTodo.setId(100);
-        newTodo.setTitle("飲み会");
-        newTodo.setContent("銀座 19:00");
+		@Transactional
+		@Override
+		public void run(String... args) throws Exception {
+			todoMapper.deleteAll();
 
-        todoMapper.delete(newTodo.getId());
+			Todo input = new Todo();
+			input.setId(100);
+			input.setTitle("ゲーム買う");
+			input.setContent("どうぶつの森をAmazonで買う。");
+			todoMapper.insert(input);
 
-        todoMapper.insert(newTodo); // 新しいTodoをインサートする
+			input.setId(200);
+			input.setTitle("映画見る");
+			input.setContent("ハリーポッターを見る。");
+			todoMapper.insert(input);
 
-        for (Todo todo : todoMapper.selectAll()) {
-            System.out.println("ID       : " + todo.getId());
-            System.out.println("TITLE    : " + todo.getTitle());
-            System.out.println("CONTENT  : " + todo.getContent());
-        }
-    }
+			input.setId(300);
+			input.setTitle("ゲームする");
+			input.setContent("買ってきたゲームをする。");
+			todoMapper.insert(input);
+
+			for (Todo todo : todoMapper.selectAll()) {
+				System.out.println("ID       : " + todo.getId());
+				System.out.println("TITLE    : " + todo.getTitle());
+				System.out.println("CONTENT  : " + todo.getContent());
+			}
+	}
 }
