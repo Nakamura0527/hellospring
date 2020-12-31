@@ -3,6 +3,7 @@ package com.hellospring.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hellospring.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,13 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hellospring.domain.Todo;
-import com.hellospring.service.TService;
 
 @Controller
 public class TodoController {
 
 	@Autowired
-	private TService service;
+	private TodoService service;
 
 	 @RequestMapping("/list/")
 	 public String list(Model model) {

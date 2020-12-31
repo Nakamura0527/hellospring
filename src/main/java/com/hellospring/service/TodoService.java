@@ -11,7 +11,7 @@ import com.hellospring.mapper.TodoListMapper;
 import com.hellospring.mapper.TodoMapper;
 
 @Service
-public class TodoService implements TService {
+public class TodoService {
 
 	@Autowired
 	private TodoMapper todoMapper;
