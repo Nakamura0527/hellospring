@@ -5,11 +5,16 @@
 <mapper namespace="com.hellospring.mapper.TodoListMapper">
   <select id="selectList" resultType="com.hellospring.domain.Todo" parameterType="com.hellospring.dto.FindParameter">
     SELECT
-      *
+      id
+      ,status_nm
+      ,title
+      ,content
     FROM
       todo
+    INNER JOIN status
+    ON todo.status_cd = status.status_cd
     WHERE
-        title = #{title}
+        title LIKE CONCAT(#{title}, '%')
     ORDER BY
       title
   </select>

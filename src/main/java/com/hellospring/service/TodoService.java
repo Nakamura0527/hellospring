@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hellospring.domain.Todo;
 import com.hellospring.mapper.TodoListMapper;
 import com.hellospring.mapper.TodoMapper;
 
 @Service
-public class TodoService {
+public class TodoService implements TService {
 
 	@Autowired
 	private TodoMapper todoMapper;
@@ -45,6 +46,7 @@ public class TodoService {
 		return list;
 	}
 
+    @Transactional
 	public int register(Todo todo) {
 		return todoMapper.insert(todo);
 	}

@@ -27,16 +27,19 @@ public class HellospringApplication implements CommandLineRunner{
 
 			Todo input = new Todo();
 			input.setId(100);
+			input.setStatusCd("1");
 			input.setTitle("ゲーム買う");
 			input.setContent("どうぶつの森をAmazonで買う。");
 			todoMapper.insert(input);
 
 			input.setId(200);
+			input.setStatusCd("1");
 			input.setTitle("映画見る");
 			input.setContent("ハリーポッターを見る。");
 			todoMapper.insert(input);
 
 			input.setId(300);
+			input.setStatusCd("1");
 			input.setTitle("ゲームする");
 			input.setContent("買ってきたゲームをする。");
 			todoMapper.insert(input);
