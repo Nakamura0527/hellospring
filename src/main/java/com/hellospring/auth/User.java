@@ -14,8 +14,7 @@ public class User implements UserDetails {
 	private String username;
 	private String password;
 
-	private String[] userroles = {"ROLE_USER"};
-	private List<String> roles = Arrays.asList(userroles);
+	private List<String> roles;
 
 	public User(String username) {
 		this.username = username;

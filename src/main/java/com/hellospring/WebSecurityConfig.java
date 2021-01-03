@@ -33,11 +33,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.anyRequest().authenticated()
 			.and()
-			.formLogin();
+			.formLogin()
+			.defaultSuccessUrl("/list/");
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+		PasswordEncoder encoder = new BCryptPasswordEncoder();
+		System.out.println(encoder.encode("test"));
+		return encoder;
 	}
 }
