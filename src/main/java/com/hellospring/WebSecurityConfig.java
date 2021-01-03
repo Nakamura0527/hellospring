@@ -22,7 +22,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserService userService;
 
-
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.userDetailsService(userService);
@@ -30,11 +29,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.anyRequest().authenticated()
-			.and()
+		http
+			.authorizeRequests()
+				.antMatchers("/logout").permitAll()
+				.anyRequest().authenticated()
+				.and()
 			.formLogin()
-			.defaultSuccessUrl("/list/");
+				.loginPage("/login")
+				.defaultSuccessUrl("/list")
+				.permitAll()
+				.and()
+			.logout()
+				.logoutSuccessUrl("/login")
+				.permitAll()
+		;
 	}
 
 	@Bean
