@@ -1,24 +1,35 @@
-package com.hellospring.domain;
+package com.hellospring.auth;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.thymeleaf.expression.Lists;
 
-public class User implements Serializable , UserDetails {
+public class User implements UserDetails {
 
 	private String username;
 	private String password;
+
+	private String[] userroles = {"ROLE_USER"};
+	private List<String> roles = Arrays.asList(userroles);
 
 	public User(String username) {
 		this.username = username;
 	}
 
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
+		return roles.stream()
+				.map(SimpleGrantedAuthority::new)
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -34,19 +45,19 @@ public class User implements Serializable , UserDetails {
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO 自動生成されたメソッド・スタブ
-		return false;
+		return true;
 	}
 
 	@Override

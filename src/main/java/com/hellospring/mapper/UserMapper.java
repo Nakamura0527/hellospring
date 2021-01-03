@@ -4,15 +4,13 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.hellospring.domain.User;
+import com.hellospring.auth.User;
 
 @Mapper
-
 public interface UserMapper {
 
-	@Select("SELECT username, password FROM tuser WHERE username = #{username}")
     User select(String username);
 
-	@Insert("INSERT INTO tuser (username, password) VALUES (#{username}, #{password})")
+	@Insert("INSERT INTO m_user (username, password) VALUES (#{username}, #{password})")
 	int insert(String username, String password);
 }
