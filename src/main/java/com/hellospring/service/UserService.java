@@ -15,6 +15,10 @@ public class UserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userMapper.select(username);
+        UserDetails user =  userMapper.select(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("ユーザが存在しない");
+        }
+        return user;
     }
 }

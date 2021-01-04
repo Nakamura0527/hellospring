@@ -16,10 +16,6 @@ public class User implements UserDetails {
 
 	private List<String> roles;
 
-	public User(String username) {
-		this.username = username;
-	}
-
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
