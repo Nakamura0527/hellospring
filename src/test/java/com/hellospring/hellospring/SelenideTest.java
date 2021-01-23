@@ -14,6 +14,6 @@ public class SelenideTest {
 		open("http://google.com");
 		$(By.name("q")).setValue("バナナ 大好き").pressEnter();
 
-		$("#result-stats").shouldHave(text("約 15,000,000 件"));
+		$("#result-stats").shouldHave(text("約 13,200,000 件"));
 	}
 }
