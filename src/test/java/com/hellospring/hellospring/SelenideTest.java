@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 
 public class SelenideTest {
 
-	@Test
+//	@Test
 	void testtest() {
 		System.setProperty("webdriver.chrome.driver", "D:\\tools\\chromedriver_win32\\87.0.4280.88\\chromedriver.exe");
 		open("http://google.com");

@@ -5,6 +5,7 @@ import com.hellospring.mapper.TodoListMapper;
 import com.hellospring.mapper.TodoMapper;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -18,6 +19,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 
+@Disabled
 @SpringBootTest
 public class TodoServiceTest {
 
