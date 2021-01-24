@@ -16,7 +16,7 @@ public interface TodoMapper {
 	 * TODO情報を登録する。
 	 * @param toto TODO情報
 	 */
-	@Insert("INSERT INTO todo (id, title, content) VALUES (#{id}, #{title}, #{content})")
+	@Insert("INSERT INTO todo (id, status_cd, title, content) VALUES (#{id}, #{statusCd}, #{title}, #{content})")
 	int insert(Todo toto);
 
 	/**
@@ -39,7 +39,7 @@ public interface TodoMapper {
 	 * @param id ID
 	 */
 	@Delete("DELETE FROM todo WHERE id = #{id}")
-	void delete(int id);
+	int delete(int id);
 
 	/**
 	 * TODO情報を全件削除する。

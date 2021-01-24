@@ -8,8 +8,11 @@ CREATE TABLE IF NOT EXISTS status (
     status_cd TEXT
     ,status_nm TEXT
 );
-
-DELETE FROM status;
-INSERT INTO status (status_cd, status_nm) VALUES ('1', '未着');
-INSERT INTO status (status_cd, status_nm) VALUES ('2', '進行中');
-INSERT INTO status (status_cd, status_nm) VALUES ('3', '完了');
+CREATE TABLE IF NOT EXISTS m_user (
+    username TEXT
+    ,password TEXT
+);
+CREATE TABLE IF NOT EXISTS m_user_roles (
+    username TEXT
+    ,role_nm TEXT
+);

@@ -1,20 +1,10 @@
 <!doctype html>
-<html lang="ja">
-  <head>
-    <title>登録</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- 日本語フォント -->
-    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic" rel="stylesheet">
-    <style>
-      body {
-        font-family: "Sawarabi Gothic";
-      }
-    </style>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+  <head th:replace="common::head">
   </head>
   <body>
     <div class="container">
-      <form action="/register/" method="post">
+      <form th:action="@{/register}" method="post">
         <div class="row">
           <div class="col">
             <div class="form-group">

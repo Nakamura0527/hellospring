@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
   <head>
     <title>リスト</title>
     <meta charset="utf-8">
@@ -14,7 +14,17 @@
   </head>
   <body>
     <div class="container">
-      <form action="/find/" method="get">
+      <div class="row">
+        <div class="col">
+          <!-- logoutはcsrfトークンが必要なので th:action を使う-->
+<!--          <a class="btn btn-success" href="/logout">logoutlink</a>-->
+          <form th:action="@{/logout}" method="post">
+            <button type="submit" class="btn btn-success">logout</button>
+          </form>
+        </div>
+      </div>
+
+      <form th:action="@{/find}" method="get">
         <div class="row">
           <div class="col">
             <div class="form-group">
@@ -32,7 +42,7 @@
         </div>
         <div class="row">
           <div class="col text-right">
-            <a class="btn btn-primary" href="/newtodo/" role="button">New</a>
+            <a class="btn btn-primary" href="/newtodo" role="button">New</a>
           </div>
           <div class="col text-right">
             <button type="submit" class="btn btn-primary">Search</button>
@@ -60,6 +70,7 @@
         </div>
       </div>
     </div>
+
     <script th:href="@{/webjars/jquery/3.5.0/js/jquery.min.js}"></script>
     <script th:href="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

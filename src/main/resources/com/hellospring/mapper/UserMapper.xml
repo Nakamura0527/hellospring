@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hellospring.mapper.UserMapper">
+  <resultMap id="userDetails" type="com.hellospring.auth.User">
+    <result property="username" column="username" />
+    <result property="password" column="password" />
+    <collection property="roles" ofType="java.lang.String">
+      <result column="role_nm" />
+    </collection>
+  </resultMap>
+  <select id="select" parameterType="java.lang.String" resultMap="userDetails">
+    SELECT
+      m_user.username
+      , m_user.password
+      , m_user_roles.role_nm
+    FROM
+      m_user
+      INNER JOIN m_user_roles
+        ON m_user.username = m_user_roles.username
+    WHERE
+      m_user.username = #{ username }
+  </select>
+</mapper>

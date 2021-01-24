@@ -3,9 +3,9 @@ package com.hellospring.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hellospring.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hellospring.domain.Todo;
-import com.hellospring.service.TodoService;
 
 @Controller
 public class TodoController {
@@ -22,14 +21,19 @@ public class TodoController {
 	@Autowired
 	private TodoService service;
 
-	 @RequestMapping("/list/")
+	@RequestMapping("/")
+	public String index() {
+		return "redirect:/list";
+	}
+
+	 @RequestMapping("/list")
 	 public String list(Model model) {
 	 	List<Todo> todoList = service.findTodoList();
 	 	model.addAttribute("todoList", todoList);
 	 	return "list";
 	 }
 
-	@GetMapping("/find/")
+	@GetMapping("/find")
 	public String hello(Model model, @RequestParam(value = "title") String title, @RequestParam(value = "content") String content) {
 		List<Todo> todoList = service.findTodoList(title);
 		model.addAttribute("todoList", todoList);
@@ -45,13 +49,12 @@ public class TodoController {
 		return "list";
 	}
 
-	@RequestMapping("/newtodo/")
+	@RequestMapping("/newtodo")
 	public String newtodo() {
 		return "register";
 	}
 
-    @Transactional
-	@PostMapping("/register/")
+	@PostMapping("/register")
 	public String register(Model model, @RequestParam(value = "id") String id, @RequestParam(value = "title") String title, @RequestParam(value = "content") String content) {
     	Todo todo = new Todo();
     	todo.setId(Integer.parseInt(id));
@@ -65,7 +68,7 @@ public class TodoController {
     	// 検索
 		List<Todo> todoList = service.findTodoList();
 		model.addAttribute("todoList", todoList);
-		return "list";
+		return "redirect:/list"; // 登録系のあとはredirectにすること
 	}
 
 }
