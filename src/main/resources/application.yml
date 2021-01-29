@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://db-java-study.ct7mce7umdlx.us-west-2.rds.amazonaws.com:3306/banana
+    url: jdbc:mysql://db-java-study.ct7mce7umdlx.us-west-2.rds.amazonaws.com:3306/hellospring
     username: admin
     password: ppppaaaa
     driver-class-name: com.mysql.cj.jdbc.Driver
