@@ -19,7 +19,6 @@ import java.util.List;
 
 import static org.mockito.Mockito.when;
 
-@Disabled
 @SpringBootTest
 public class TodoServiceTest {
 
